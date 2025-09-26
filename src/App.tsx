@@ -253,6 +253,7 @@ async function getSongDatas(wiki: TaikowikiApi, force?: true) {
   }
 
   for (const songData of songDataArray) {
+    if(!songData.version.includes("NAC") || songData.isDeleted) continue;
     for (let diff of ['easy', 'normal', 'hard', 'oni', 'ura'] as const) {
       // byDiffLevel
       if (songData.courses[diff]) {
